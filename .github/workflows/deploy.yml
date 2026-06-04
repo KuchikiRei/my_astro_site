@@ -24,7 +24,7 @@ jobs:
         uses: withastro/action@v5
         with:
           # 💡 核心修改：显式指定使用 pnpm，因为 Fuwari 主题完美适配 pnpm
-          package-manager: pnpm@latest
+          package-manager: pnpm@9.14.4
 
   deploy:
     needs: build
