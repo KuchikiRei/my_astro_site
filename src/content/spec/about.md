@@ -1,11 +1,11 @@
 # About
 <!-- This is the site for [Fuwari](https://github.com/saicaca/fuwari). -->
-Welcome to [LinKong](https://github.com/kuchikirei)'s Blog 
+Welcome to [LinKong's](https://github.com/kuchikirei) Blog 
 
 ::github{repo="kuchikirei/my_astro_site"}
 
 > ### My Friends
-> - [r1ce](https://https://www.r1ce.cn/)
+> - [r1ce](https://www.r1ce.cn/)
 
 <!-- > ### Sources of images used in this site -->
 <!-- > - [Unsplash](https://unsplash.com/) -->
