@@ -19,8 +19,12 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v5
+        
       - name: Install, build, and upload your site
         uses: withastro/action@v5
+        with:
+          # 💡 核心修改：显式指定使用 pnpm，因为 Fuwari 主题完美适配 pnpm
+          package-manager: pnpm@latest
 
   deploy:
     needs: build
