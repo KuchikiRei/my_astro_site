@@ -5,7 +5,7 @@ Welcome to [LinKong](https://github.com/kuchikirei)'s Blog
 ::github{repo="kuchikirei/my_astro_site"}
 
 > ### My Friends
-> - [r1ce](https://https://r1ce.cn/)
+> - [r1ce](https://https://www.r1ce.cn/)
 
 <!-- > ### Sources of images used in this site -->
 <!-- > - [Unsplash](https://unsplash.com/) -->
