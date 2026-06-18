@@ -18,6 +18,8 @@ lang: ''
 在计算机中使用原子级操作，实现对计算机资源的计数。
 > 原子级操作：在计算机的控制下，将内存地址中的数据值进行增加或删除，同时将该步骤封装成为一个完整的步骤，不可被打断，此区间内任何其余操作都将被屏蔽
 #### 信号量机制下的核心操作
+引入`somephore.h`文件库。  
+
 **Somephore**: 申请计数器，设置计数器的大小。
 
 **P**: 申请操作，申请一个资源，并将资源数量 **-1**，如果此时资源数量为 **0**, 那么暂时阻塞该线程。
@@ -179,7 +181,7 @@ void *productor(void *arg){
     }
 }
 
-void *consumer(void *arg){
+void *consumor(void *arg){
     while(true){
         sem_wait(&full);
         sem_wait(&mutex);

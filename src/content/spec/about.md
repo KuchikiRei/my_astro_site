@@ -7,6 +7,7 @@ Welcome to [LinKong's](https://github.com/kuchikirei) Blog
 > ### My Friends
 > - [r1ce](https://www.r1ce.cn/)
 > - [Reinon](https://blog.supid.cn/)
+> - [LiQiWen](https://lqw.merl.net.cn/)
 
 <!-- > ### Sources of images used in this site -->
 <!-- > - [Unsplash](https://unsplash.com/) -->
