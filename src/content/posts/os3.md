@@ -46,7 +46,7 @@ lang: ''
 
 ### 申请公共内存
 具体操作:  
-1. 申请标识符,通过调用`sys/mann.h`库下的`shm_open`进行初始化。  
+1. 申请标识符,通过调用`sys/mman.h`库下的`shm_open`进行初始化。  
 参考格式: `int name = shm_open(const char *name, int oflag, mode_t mode)`,  
 **name**: 共享内存在本地目录下存储的名称，必须以 **/** 开头，且不能有任何其余 **/**。   
 **oflag**: 打开方式，**O_CREAT**:不存在则创建;**O_RDWR**:可读写;**O_RDONLY**:只读;**O_EXCL**:与O_CREAT同时使用时，如果检测到同名地址空间，则退出程序。  
@@ -55,24 +55,25 @@ lang: ''
 参考格式: `fturncate(int fd, off_t length)`,  
 **fd**: 打开的文件描述符。  
 **length**: 待申请的内存地址空间。
-3. 内存地址的映射,通过调用`sys/mann.h`库下的`mmap`等函数来进行映射操作。  
+3. 内存地址的映射,通过调用`sys/mman.h库下的`mmap`等函数来进行映射操作。  
 参考格式: `void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset);`
 **addr**： 设定起始内存地址，通常设置为NULL，让内核自动分配。  
 **length**: 映射地址长度。  
-**prot**: 映射区域的权限，在`sys/mann.h`库下提供四种权限: **PROT_NONE**不可访问; **PROT_READ**可读; **PROT_WRITE**可写; **PORT_EXEC**可执行。  
-**flags**: 控制映射类型，在`sys/mann.h`库下提供三种类型: **MAP_SHARED**:所有映射该文件的进程共享内存空间; **MAP_PRIVATE**:私有映射，是MAP_SHARED的逆操作;**MAP_ANONYMOUS**:匿名共享，用于为进程间共享的大块堆内存。  
+**prot**: 映射区域的权限，在`sys/mman.h`库下提供四种权限: **PROT_NONE**不可访问; **PROT_READ**可读; **PROT_WRITE**可写; **PORT_EXEC**可执行。  
+**flags**: 控制映射类型，在`sys/mman.h`库下提供三种类型: **MAP_SHARED**:所有映射该文件的进程共享内存空间; **MAP_PRIVATE**:私有映射，是MAP_SHARED的逆操作;**MAP_ANONYMOUS**:匿名共享，用于为进程间共享的大块堆内存。  
 **fd**: 文件描述符。  
 **offset**: 文件偏移量，通常设置为**0**。
 
 参考代码：
 ```cpp
-#include <sys/mann.h>
+#include <sys/mman.h>
 #include <unistd.h>
 
 int main(){
     int fd = shm_open("/shm_data", O_CREAT | O_RDWR, 0600);
     ftruncate(fd, sizeof(ShareData));
     ShareData* data = (ShareData*)mmap(NULL, sieof(ShareData), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+    data -> item = 0; // 并对映射的内存空间中的元素进行初始化
 }
 ```
 
@@ -112,7 +113,7 @@ int main(){
     sem_unlink("/sem_full");
     sem_unlink("/sem_empty");
 ``` 
-使用`sys/mann.h`库下的`shm_unlink()`函数回收申请的公共内存。
+使用`sys/mman.h`库下的`shm_unlink()`函数回收申请的公共内存。
 ```cpp
     shm_unlink("/sem_data");
 ```
@@ -122,7 +123,7 @@ int main(){
 #include <unistd.h>
 #include <semaphore.h>
 #include <fcntl.h>
-#include <sys/mann.h>
+#include <sys/mman.h>
 #include <sys/wait.h>
 
 const int N = 5;
@@ -161,6 +162,7 @@ void consumor(ShareData *data, sem_t *mutex, sem_t *full, sem_t *empty){
 }
 
 int main(){
+
     mutex = sem_open("/sem_mutex", O_CREAT, 0600, 1);
     full = sem_open("/sem_full", O_CREAT, 0600, 0);
     empty = sem_open("/sem_empty", O_CREAT, 0600, N);
@@ -168,6 +170,7 @@ int main(){
     int fd = shm_open("/shm_data", O_CREAT | O_RDWR, 0600);
     ftruncate(fd, sizeof(ShareData));
     ShareData* data = (ShareData*)mmap(NULL, sizeof(ShareData), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+    data -> item = 0;
 
     pid_t pid_productor = fork();
     if(pid_productor == 0){
