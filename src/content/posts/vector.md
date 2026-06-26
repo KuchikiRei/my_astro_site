@@ -1,3 +1,45 @@
+---
+title: C++下的 vector 实现
+published: 2026-06-26
+description: ''
+image: ''
+tags: [DS]
+category: 'DataStruct'
+draft: false 
+lang: ''
+---
+
+### 复刻 **C++STL** 之 **vector**
+
+#### 实现操作:
+>    私有类:
+>    - _size
+>    - _capacity
+>   - *_data
+>  - _expand
+    
+>    公有类:
+>    - DynamicArray()
+>    - DynamicArray(size_t capacity)
+>    - DynamicArray(const DynamicArray &other)
+>    - ~DynamicArray()
+>    - push_back(const Elem &elem)
+>    - pop_back()
+>    - operator[]
+>    - operator=
+>    - at(size_t idx)
+>    - size()
+>    - capacity()
+>    - empty()
+>    - back()
+>    - front()
+>    - clear()
+>    - insert(size_t pos, const Elem &val)
+>    - erase(size_t pos)
+
+#### 代码实现
+
+```cpp
 #include <cstddef>
 #include <stdexcept>
 
@@ -145,3 +187,5 @@ public:
       _data[i] = _data[i + 1];
   }
 };
+
+```

@@ -1,5 +1,5 @@
 ---
-title: algorithm1
+title: 一些算法知识点
 published: 2026-06-21
 description: ''
 image: ''
