@@ -1,5 +1,5 @@
 ---
-title: DataStruct
+title: 常用数据结构
 published: 2026-06-22
 description: ''
 image: ''
