@@ -32,10 +32,11 @@ int partition(std::vector<int>& arr, int left, int right){
         /*
             此处设置左侧第一个元素为基准元素
         */
-        while(i < j && arr[i] <= arr[left])
-            i++;                // 逐渐缩减范围
+        // 先判断右指针，再判断左指针
         while(i < j && arr[left] <= arr[j])
             j--;
+        while(i < j && arr[i] <= arr[left])
+            i++;                // 逐渐缩减范围
         /*
             当左右两侧指针越界或者找到位置不合适的元素时，进行元素的交换
         */
