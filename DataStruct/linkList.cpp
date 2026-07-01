@@ -162,6 +162,8 @@ public:
     node *current;
 
   public:
-    iterator()
+    iterator(node *p) : current(p) {};
   };
+  iterator begin() { return iterator(head->next); }
+  iterator end() { return iterator(tail); }
 };
