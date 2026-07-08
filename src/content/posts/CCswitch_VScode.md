@@ -1,5 +1,5 @@
 ---
-title: CCswitch_VsCode
+title: 在 VScode 中使用 CCswitch + Claude 管理本地项目
 published: 2026-07-08
 description: ''
 image: ''
@@ -9,9 +9,7 @@ draft: false
 lang: ''
 ---
 
-### 在 VScode 中使用 CCswitch + Claude 管理本地项目
-
-#### 安装 CCswith 并配置
+### 安装 CCswith 并配置
 在[发布页](https://github.com/farion1231/cc-switch/releases)中安装对应版本。
 ![在win下下载对应的版本](images/20260708/1.png)
 打开**安装程序**。
@@ -25,7 +23,7 @@ lang: ''
 添加完成后并使用，结束**CCswitch**的安装配置。
 ![使用新的api](images/20260708/6.png)
 
-#### 安装 VScode
+### 安装 VScode
 安装对应版本的**VScode**
 ![win中安装vscode](images/20260708/7.png)
 在扩展中搜索并安装**CAnthropic.claude-code**
