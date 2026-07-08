@@ -3,10 +3,7 @@ title: GSR 项目实现
 published: 2026-07-08
 description: ''
 image: ''
-tags: 
-    - Ai
-    - Graph Learning
-    - GSR
+tags: [Graph Learning]
 category: 'Ai'
 draft: false 
 lang: ''
