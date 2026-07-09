@@ -112,7 +112,42 @@ if(file.is_open()){
 将数字流入字符串中
 ```cpp
 int num = 12345;
-std::ostringstream str;
-str << num;
+std::ostringstream iss;
+iss << num;
+std::cout << iss.str() << std::endl;
+```
 
+将字符串转化为数字
+```cpp
+std::string input = "1.23";
+std::istringstream iss(input);
+double num;
+iss >> num;
+
+/* 使用 fail() 来判断是否解析成功*/
+if (iss.fail()) {
+    std::cout << "解析失败！" << std::endl;
+}
+```
+
+### 尝试拆分复杂字符串
+sstream会自动以空格为分界自动拆解字符串。
+```cpp
+std::string input = "1 Alice 30 math"
+std::istringstream iss(input);
+int id;
+std::string name;
+int age;
+std::string course;
+iss >> id >> name >> age >> class;
+std::cout << "id:" << id << ",name:" << name
+          << ",age:" << age << ",course:" << course;
+```
+
+### 尝试动态拼接字符串
+当需要频繁拼接复杂字符串时，使用 `ostringstream` 比 `+` 执行效率更高，也更易读。
+```cpp
+std::ostringstream iss;
+iss << "ERROE " << 404 << "NOT FOUND!";
+std::string s = iss.str();
 ```
