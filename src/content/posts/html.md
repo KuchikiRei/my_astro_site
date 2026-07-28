@@ -85,3 +85,8 @@ web 上有大量内容属于列表形式，HTML 为此提供了专用元素。�
   ```html
   <a href="https://www.linkong.online/posts/html/">
   ```
+
+## 属性
+一个属性应该具有：
+
+### 布尔属性
